@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 // const { number } = require("yargs");
  const { strict, string, number } = require("yargs")
 
-const movieSchema = new mongoose.Schema({
+ baseOptions = {
+     discrimantorKey: "String",
+  };
+
+const movieSchema = mongoose.model("movieSchema" , new mongoose.Schema({
  title: {
      type: String,
      unique : true,
@@ -17,10 +21,10 @@ const movieSchema = new mongoose.Schema({
         min: 1,
         max: 10,
         default: 5,
-    },
+    }, baseOptions,
 
-});
+}));
 
-const Movie = mongoose.model("Movies" , movieSchema );
+const Movie = mongoose.model("movieSchema" );
 
 module.exports = Movie ;
