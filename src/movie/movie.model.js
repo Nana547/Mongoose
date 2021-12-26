@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 // const { number } = require("yargs");
  const { strict, string, number } = require("yargs")
 
+// I am going to introduce a discriminator key so that the TV schema can inherit from the Movie Schema.
+//  The Movie Schema is The BASE
+
  baseOptions = {
      discrimantorKey: "String",
   };

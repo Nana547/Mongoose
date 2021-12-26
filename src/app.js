@@ -1,7 +1,7 @@
 require("./db/connection")
 const yargs = require("yargs")
 const { addMovie, findMovies, updateMovies, removeMovies } = require("./movie/movie.functions")
-const { addTV } = require("./tv/tv.functions")
+const { addTV, findTV, updateTV, deleteTV } = require("./tv/tv.functions")
 const mongoose = require("mongoose")
 
 const app = async (args) => {
@@ -33,7 +33,23 @@ const app = async (args) => {
         const tvObj = { }
         await addTV(tvObj);
         mongoose.disconnect( )
+    } else if(args.findTV){
+        fndObj = { }
+        await findTV(fndObj)
+        mongoose.disconnect( )
     }
+     else if(args.updateTV){ 
+         updObj = { }
+         await updateTV(updObj)
+         updateTV.save( )
+         mongoose.disconnect( )
+     }
+     else if(args.deleteTV) {
+         delObj = { }
+         await deleteTV(delObj)
+         deleteTV.save( )
+         mongoose.disconnect( )
+     }
     else {
         console.log("Incorrect command");
         mongoose.disconnect();
